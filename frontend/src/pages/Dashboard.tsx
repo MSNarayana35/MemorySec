@@ -8,6 +8,8 @@ import { Incident, HindsightMemoryItem, SystemStatus } from '../types';
 import { SeverityBadge } from '../components/SeverityBadge';
 import { StatusBadge } from '../components/StatusBadge';
 import { LearningLoopBanner } from '../components/LearningLoopBanner';
+import { MitreMatrixWidget } from '../components/MitreMatrixWidget';
+import { LiveTelemetryStreamer } from '../components/LiveTelemetryStreamer';
 
 export const Dashboard: React.FC = () => {
   const [incidents, setIncidents] = useState<Incident[]>([]);
@@ -133,6 +135,12 @@ export const Dashboard: React.FC = () => {
           <div className="text-[10px] text-cyan-400/80">Utilized Hindsight experience</div>
         </div>
       </div>
+
+      {/* Live SOC Telemetry Streamer */}
+      <LiveTelemetryStreamer />
+
+      {/* MITRE ATT&CK Matrix Coverage */}
+      <MitreMatrixWidget />
 
       {/* Main Grid: Recent Incidents vs Severity Chart & Recent Memories */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

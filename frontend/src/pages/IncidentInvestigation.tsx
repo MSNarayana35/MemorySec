@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Shield, Brain, Cpu, CheckCircle2, Sparkles, Terminal, FileText, ArrowLeft, RefreshCw, Loader2, AlertTriangle } from 'lucide-react';
+import { Shield, Brain, Cpu, CheckCircle2, Sparkles, Terminal, FileText, ArrowLeft, RefreshCw, Loader2, AlertTriangle, Download } from 'lucide-react';
 
 import { fetchIncidentById, analyzeIncident, fetchAgentExecutionTrace } from '../services/api';
 import { Incident, StructuredIncidentAnalysis, AgentExecutionTrace } from '../types';
@@ -123,6 +123,29 @@ export const IncidentInvestigation: React.FC = () => {
         </div>
 
         <div className="flex items-center space-x-3">
+          <button
+            onClick={async () => {
+              try {
+                const res = await fetch(`/api/analytics/report/${incident.id}`);
+                if (res.ok) {
+                  const data = await res.json();
+                  const blob = new Blob([data.report_markdown], { type: 'text/markdown' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = `Executive_Report_${incident.id}.md`;
+                  a.click();
+                }
+              } catch (e) {
+                console.error(e);
+              }
+            }}
+            className="px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-cyan-300 text-xs font-semibold border border-cyan-500/30 flex items-center space-x-1.5 transition-all"
+          >
+            <Download className="w-4 h-4 text-cyan-400" />
+            <span>Export Executive Brief</span>
+          </button>
+
           <button
             onClick={() => runAnalysis(incident.id)}
             disabled={analyzing}

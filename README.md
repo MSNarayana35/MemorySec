@@ -26,6 +26,12 @@ RECALL → ANALYZE → RESPOND → RESOLVE → RETAIN
 5. **Hindsight Retention**: MemorySec stores the incident experience in Hindsight.
 6. **Continuous Learning**: Subsequent similar incidents automatically benefit from recalled memory!
 
+### High-Level Enterprise Features
+- 🛡️ **MITRE ATT&CK® Tactic & Technique Matrix Coverage**: Interactive visualization mapping detected techniques across standard attack pillars (Initial Access, Execution, Privilege Escalation, Credential Access, Exfiltration).
+- 🛰️ **Real-Time SOC Telemetry Streamer**: Simulated live syslog, CloudTrail, and K8s audit ticker with 1-click incident ingestion.
+- 🔍 **Automated IoC Threat Risk Meter**: Instant extraction of IPv4 addresses, Accounts, Subnets, and Hashes with risk scoring (0-100).
+- 📄 **Executive Brief Markdown Exporter**: 1-click export of structured executive incident briefing reports.
+
 ---
 
 ## 2. Technology Stack
